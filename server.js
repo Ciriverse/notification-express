@@ -9,7 +9,7 @@ app.use(cors());
 require("./connection");
 
 const server = require("https").createServer(app);
-// const PORT = 8080;
+const PORT = 8080;
 const io = require("socket.io")(server, {
   cors: {
     origin: "https://www.ciriverse.xyz",
@@ -52,6 +52,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(() => {
+server.listen(PORT, () => {
   console.log("listening to port");
 });
