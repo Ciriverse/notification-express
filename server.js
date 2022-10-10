@@ -8,7 +8,7 @@ app.use(express.json());
 
 require("./connection");
 
-const server = require("https").createServer(app);
+const server = require("http").createServer(app);
 const PORT = 8080;
 const io = require("socket.io")(server);
 
