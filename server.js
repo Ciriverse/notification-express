@@ -1,21 +1,16 @@
 const express = require("express");
 const app = express();
-const cors = require("cors");
+// const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 
 require("./connection");
 
 const server = require("https").createServer(app);
 const PORT = 8080;
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "https://www.ciriverse.xyz",
-    methods: ["GET", "POST"],
-  },
-});
+const io = require("socket.io")(server);
 
 // socket connection
 io.on("connection", (socket) => {
