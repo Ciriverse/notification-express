@@ -53,5 +53,5 @@ io.on("connection", (socket) => {
 });
 
 server.listen(() => {
-  console.log("listening to port", PORT);
+  console.log("listening to port");
 });
