@@ -9,7 +9,7 @@ app.use(cors());
 require("./connection");
 
 const server = require("http").createServer(app);
-const PORT = 8080;
+
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
@@ -55,6 +55,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log("listening to port");
 });
