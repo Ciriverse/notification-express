@@ -16,6 +16,7 @@ const io = require("socket.io")(server, {
     methods: ["GET", "POST"],
   },
 });
+
 io.on("error", function (err) {
   console.error("Error connecting to redis", err);
 });
