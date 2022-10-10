@@ -1,19 +1,16 @@
-const express = require("express");
-const app = express();
-
 const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 require("./connection");
 
 const server = require("http").createServer(app);
-const PORT = 8080;
+// const PORT = 8080;
 const io = require("socket.io")(server, {
   cors: {
-    // origin: "https://www.ciriverse.xyz",
+    origin: "https://www.ciriverse.xyz",
     methods: ["GET", "POST"],
   },
 });
@@ -53,6 +50,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log("listening to port");
+server.listen(() => {
+  console.log("listening to port", PORT);
 });
