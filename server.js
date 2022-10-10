@@ -1,16 +1,21 @@
 const express = require("express");
 const app = express();
-// const cors = require("cors");
+const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 require("./connection");
 
 const server = require("http").createServer(app);
 const PORT = 8080;
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 // socket connection
 io.on("connection", (socket) => {
